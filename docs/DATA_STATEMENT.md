@@ -21,6 +21,11 @@ configured bounds. Review the generated cleaning report to understand exclusions
 Time splits are chronological row slices and can share boundary timestamps;
 they are not necessarily separate whole-day or whole-month partitions.
 
+At serving time, missing prior demand hours are also filled with zero counts.
+The API does not distinguish these gaps from observed zero-pickup hours or
+reject a request solely because its history window is incomplete. Keep saved
+history current and check its coverage; HTTP success is not a data-quality check.
+
 ## Evaluation Limits
 
 Historical held-out performance estimates behavior only within the evaluated

@@ -55,8 +55,12 @@ Invoke-RestMethod -Method Post -Uri "http://127.0.0.1:8000/explain/demand" -Cont
 ```
 
 Choose a time with sufficient prior lag/rolling history for other datasets.
-Single-step prediction does not fill arbitrarily missing history. Invalid
-schemas return 422; unknown zones or unsupported history can return 400.
+The feature builder fills missing prior hours with zero counts; it does not
+reject an incomplete history window. A successful response therefore does not
+prove that the required history was observed. Single-step requests do not
+recursively predict intervening hours; use `/forecast/demand` for consecutive
+future hours starting immediately after the saved history. Invalid schemas
+return 422; demand requests for unknown zones return 400.
 Responses include an `X-Request-ID` header for tracing.
 
 ## Python Client

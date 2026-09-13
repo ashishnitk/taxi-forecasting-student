@@ -10,8 +10,9 @@ before lag and rolling features are calculated. Both branches use chronological
 
 Training compares XGBoost and LightGBM using validation RMSE. Each estimator
 logs parameters, validation/test scores and its model in MLflow. The selected
-winner receives SHAP plots and a model card, and registration is an explicit
-additional action. SQLite holds metadata; `mlruns/` holds artifact files.
+winner receives SHAP plots and a model card. The training command registers
+winners by default; `--no-register` skips registration while retaining tracked
+runs and artifacts. SQLite holds metadata; `mlruns/` holds artifact files.
 
 ## Serving
 
