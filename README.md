@@ -12,6 +12,10 @@ infrastructure templates. It contains no datasets or trained model bundles.
 
 ## Start Locally
 
+For the preinstalled Windows course image, follow the
+[AWS account and image-access guide](docs/STUDENT_AWS_IMAGE_ACCESS.md) instead of
+recreating the environment with the local-install commands below.
+
 Use Python 3.11. From the repository root on Windows PowerShell:
 
 ```powershell
@@ -27,6 +31,7 @@ after cloning: serving requires both registered models and saved demand history.
 
 ## Documentation
 
+- [Request and launch the Windows course image](docs/STUDENT_AWS_IMAGE_ACCESS.md)
 - [Local setup and commands](docs/SETUP.md)
 - [API request examples](docs/API_EXAMPLES.md)
 - [System architecture](docs/ARCHITECTURE.md)
