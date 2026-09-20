@@ -8,8 +8,8 @@ environment interpreter. On other systems use the corresponding `.venv/bin/pytho
 ## 1. Environment and Tests
 
 ```powershell
-python --version
-python -m venv .venv
+py -3.11 --version
+py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m pytest
@@ -20,6 +20,18 @@ No activation or execution-policy change is necessary. The test suite uses
 synthetic inputs and mocked cloud clients. A passing test suite does not prove
 cloud availability or model accuracy. Core requirements do not include the
 optional dashboard or managed-monitoring dependencies.
+
+Use 64-bit Python 3.11 even when a newer system Python is installed. Verify with
+`.\.venv\Scripts\python.exe --version`; an existing environment keeps the version
+used to create it. Select this environment with VS Code's Microsoft Python
+extension. For notebooks, also install Microsoft's Jupyter extension and select
+the same `.venv` kernel. The dependency list includes notebook support, not
+presentation-authoring software.
+
+Plain `pytest` does not enable coverage automatically. To check the configured
+coverage threshold, use `python -m pytest --cov=src --cov-report=term-missing`
+with this environment's interpreter. The [recording companion](RECORDING_COMPANION.md)
+maps each activity to its lab and records fresh-checkout differences.
 
 ## 2. Data Pipeline
 
@@ -35,6 +47,24 @@ features, and writes chronological train/validation/test splits. Outputs are
 under `data/raw`, `data/processed`, and `data/features`. The cleaning summary is
 `data/processed/pipeline_summary.json`. After a successful download, the same
 pipeline can be rerun with `--skip-download` to reuse the cache.
+
+### Exploration Notebook
+
+After the pipeline completes, open
+[the exploration notebook](../notebooks/01_explore_dataset.ipynb) in VS Code,
+select the project `.venv` kernel, and run cells in order as described in
+[L3](L3_DATA_EXPLORATION_LAB.md). It is supplied without execution results or
+machine-specific metadata. Running cells calculates in-memory examples; it does
+not replace the pipeline's persisted outputs.
+
+Optional browser-based alternative:
+
+```powershell
+.\.venv\Scripts\python.exe -m jupyterlab notebooks/01_explore_dataset.ipynb
+```
+
+The recorded `python -m scripts.build_explore_notebook` preparation command is
+included, but overwrites the notebook. Do not run it after adding work you need.
 
 ## 3. Training and Registry
 

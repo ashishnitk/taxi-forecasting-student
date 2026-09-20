@@ -15,7 +15,7 @@ infrastructure templates. It contains no datasets or trained model bundles.
 Use Python 3.11. From the repository root on Windows PowerShell:
 
 ```powershell
-python -m venv .venv
+py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m pytest
 ```
@@ -32,6 +32,16 @@ after cloning: serving requires both registered models and saved demand history.
 - [System architecture](docs/ARCHITECTURE.md)
 - [Data scope and model limitations](docs/DATA_STATEMENT.md)
 - [Optional AWS infrastructure](infra/terraform/README.md)
+- [Recording companion and learner activity map](docs/RECORDING_COMPANION.md)
+- [Recorded architecture walkthrough](docs/PROJECT_ARCHITECTURE.md)
+- [Historical business report](docs/BUSINESS_REPORT.md)
+- [Cloud cost boundaries](docs/COST_OPTIMIZATION.md)
+
+The companion links all L2-L12 learner labs; L1 uses setup and tests. Videos are
+provided separately. Lab files, reviewed diagrams, and the exploration notebook
+retain the paths shown in the recordings. The notebook has no saved outputs.
+Datasets, trained models, and evidence reports must be generated locally; AWS
+activities require your own authorized configuration or the stated local fallback.
 
 ## Layout
 
@@ -44,6 +54,7 @@ after cloning: serving requires both registered models and saved demand history.
 | `scripts/` | Technical command entrypoints |
 | `dashboard/` | Streamlit views calling the API and reading local reports |
 | `tests/` | Offline unit and integration checks |
+| `notebooks/`, `docs/` | Data exploration, learner activities, and technical references |
 | `docker/`, `infra/terraform/`, `retraining/` | Optional packaging and cloud operation |
 
 ## Operational Boundaries

@@ -169,6 +169,10 @@ resource "aws_ecs_task_definition" "dashboard" {
         {
           name  = "API_BASE_URL"
           value = "http://${aws_lb.api.dns_name}"
+        },
+        {
+          name  = "PYTHONFAULTHANDLER"
+          value = "1"
         }
       ]
       logConfiguration = {

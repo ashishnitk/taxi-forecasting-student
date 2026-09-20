@@ -23,6 +23,7 @@ FROM python:3.11-slim AS runtime
 
 ENV PATH="/opt/venv/bin:$PATH" \
     PYTHONUNBUFFERED=1 \
+    PYTHONFAULTHANDLER=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONPATH=/app \
     API_BASE_URL=http://localhost:8000

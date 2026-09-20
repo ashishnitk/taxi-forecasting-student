@@ -75,3 +75,16 @@ print(client.forecast_demand(horizon_hours=3, zones=[132, 161, 230]))
 
 Do not compare predictions to fixed expected amounts across differently trained
 model versions. Validate the input contract and inspect the current model output.
+
+## Showcase Inputs
+
+For the finished-product demonstration, use 17.0 miles, pickup zone 132 (JFK),
+drop-off zone 230 (Times Square), one passenger, and 15 January 2024 at 18:30.
+Change `trip_distance` in the fare request above to `17.0`. This is an illustrative
+input, not a routing calculation or an official fare quote. The 3.4-mile API
+example is a schema exercise, not a realistic distance for that zone pair.
+
+For the matching demand preview, set `horizon_hours` to `6` with zones 132, 161,
+and 230. The three-hour example above remains suitable for a smaller API check.
+The forecast starts after saved history, not the current clock. Actual values
+depend on your registered models and data; no exact dollar/count match is required.
